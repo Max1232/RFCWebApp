@@ -9,7 +9,7 @@ const stateWeight = document.getElementById('state-weight');
 const stateCategory = document.getElementById('state-category');
 const delBtn = document.getElementById('del-btn');
 
-// 1. Numpad Logic
+// Numpad Input Handling
 document.querySelectorAll('.num').forEach(btn => {
   btn.addEventListener('click', (e) => {
     // Prevent multiple decimals
@@ -19,7 +19,7 @@ document.querySelectorAll('.num').forEach(btn => {
   });
 });
 
-// 2. Delete / Undo Button Logic
+// Delete and Undo Logic
 delBtn.addEventListener('click', () => {
   if (delBtn.classList.contains('undo-mode')) {
     // UNDO: Pop the last entry off the array and put it back in the display
@@ -35,7 +35,7 @@ delBtn.addEventListener('click', () => {
   }
 });
 
-// 3. Enter Button Logic (Transition to State B)
+// Enter Button: Transition to Category Selection
 document.getElementById('enter-btn').addEventListener('click', () => {
   if (!currentWeight || currentWeight === ".") return;
   stateWeight.classList.remove('active');
@@ -44,7 +44,7 @@ document.getElementById('enter-btn').addEventListener('click', () => {
   stateCategory.classList.add('active');
 });
 
-// 4. Category Selection Logic (Save & Transition to State A)
+// Category Selection: Save Data and Reset
 document.querySelectorAll('.cat-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     const category = e.target.innerText;
@@ -77,7 +77,7 @@ function resetToWeightState() {
   stateWeight.classList.add('active');
 }
 
-// 5. The Undo Timer Mechanism
+// Undo Timer and Button State
 function startUndoTimer() {
   delBtn.classList.add('undo-mode');
   delBtn.innerText = 'UNDO (3s)';
@@ -98,3 +98,49 @@ function clearUndoTimer() {
   delBtn.classList.remove('undo-mode');
   delBtn.innerText = 'DEL';
 }
+
+// Sync to Google Sheets
+const syncBtn = document.getElementById('sync-btn');
+const WEBHOOK_URL = "WEBHOOK_URL_HERE"; // <-- Paste your Google URL here
+
+syncBtn.addEventListener('click', async () => {
+  if (pendingData.length === 0) {
+    alert("No items to sync!");
+    return;
+  }
+
+  // Change button text to show activity
+  const originalText = syncBtn.innerText;
+  syncBtn.innerText = "Syncing...";
+  syncBtn.disabled = true;
+
+  try {
+    // We send as plain text to avoid strict Google CORS preflight checks
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      body: JSON.stringify(pendingData),
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      }
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      // Clear the local data array
+      pendingData = [];
+      updateCount();
+      alert(`Success! Synced to sheet: ${result.sheet}`);
+    } else {
+      throw new Error(result.message || "Unknown error");
+    }
+
+  } catch (error) {
+    console.error("Sync failed:", error);
+    alert("Sync failed. Are you connected to the internet? Your data is still saved locally.");
+  } finally {
+    // Reset button
+    syncBtn.innerText = originalText;
+    syncBtn.disabled = false;
+  }
+});
