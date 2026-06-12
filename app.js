@@ -24,7 +24,7 @@ delBtn.addEventListener('click', () => {
   if (delBtn.classList.contains('undo-mode')) {
     // UNDO: Pop the last entry off the array and put it back in the display
     const lastEntry = pendingData.pop();
-    currentWeight = lastEntry.weight.toString();
+    currentWeight = lastEntry.Amount.toString();
     weightDisplay.innerText = currentWeight;
     updateCount();
     clearUndoTimer();
