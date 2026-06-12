@@ -50,10 +50,13 @@ document.querySelectorAll('.cat-btn').forEach(btn => {
     const category = e.target.innerText;
     
     // Save to local array
+    const now = new Date();
+    const date = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear().toString().slice(-2)}`;
+    
     pendingData.push({
-      timestamp: new Date().toISOString(),
-      weight: parseFloat(currentWeight),
-      category: category
+      Date: date,
+      Category: category,
+      Amount: parseFloat(currentWeight)
     });
     
     updateCount();
