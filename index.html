@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Intake Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <span id="item-count">0 Items Pending</span>
+    <button id="sync-btn">Sync to Sheet</button>
+  </header>
+
+  <main>
+    <section id="state-weight" class="active">
+      <div class="display-area">
+        <span id="weight-display"></span>
+        <span class="unit">lbs</span>
+      </div>
+      <div class="numpad">
+        <button class="num">1</button>
+        <button class="num">2</button>
+        <button class="num">3</button>
+        <button class="num">4</button>
+        <button class="num">5</button>
+        <button class="num">6</button>
+        <button class="num">7</button>
+        <button class="num">8</button>
+        <button class="num">9</button>
+        <button class="num">.</button>
+        <button class="num">0</button>
+        <button id="del-btn">DEL</button>
+        <button id="enter-btn" style="grid-column: span 3;">ENTER</button>
+      </div>
+    </section>
+
+    <section id="state-category" class="hidden">
+      <h2>Select Category</h2>
+      <div class="category-grid">
+        <button class="cat-btn">Produce</button>
+        <button class="cat-btn">Meat</button>
+        <button class="cat-btn">Dairy/Eggs</button>
+        <button class="cat-btn">Shelf Stable</button>
+        <button class="cat-btn">Bakery</button>
+        <button class="cat-btn">Prepared</button>
+        <button class="cat-btn">Crates</button>
+        <button class="cat-btn">Coolers</button>
+        <button class="cat-btn">Fish</button>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
