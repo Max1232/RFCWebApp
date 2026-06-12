@@ -12,7 +12,8 @@ body {
   background: #f4f4f9; 
   display: flex; 
   flex-direction: column; 
-  height: 100vh; 
+  height: 100vh; /* Fallback for older browsers */
+  height: 100dvh; /* Corrects for mobile browser UI */
   overscroll-behavior: none; 
 }
 
@@ -47,13 +48,15 @@ main {
 
 /* Weight State */
 .display-area { 
-  flex-grow: 1; 
+  flex-grow: 0; /* Don't allow it to grow, so numpad can fill space */
+  flex-shrink: 0; /* Don't allow it to shrink */
   display: flex; 
   justify-content: center; 
   align-items: center; 
   font-size: 4rem; 
   font-weight: bold; 
-  min-height: 15vh; 
+  min-height: 10vh; /* Use a smaller min-height */
+  padding: 20px 0; /* Add some vertical padding */
   background: white; 
   border-radius: 10px; 
   margin-bottom: 20px; 
@@ -64,7 +67,7 @@ main {
 
 .numpad { 
   display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
+  flex-grow: 1; /* Allow numpad to fill remaining space */columns: repeat(3, 1fr); 
   gap: 10px; 
   height: 60vh; 
 }
