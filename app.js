@@ -101,7 +101,7 @@ function clearUndoTimer() {
 
 // Sync to Google Sheets
 const syncBtn = document.getElementById('sync-btn');
-const WEBHOOK_URL = "WEBHOOK_URL_HERE"; // <-- Paste your Google URL here
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzEIJFnv6nQ2u6aUeyvwyX3S1MV4xfk1Szmg8C2NnEXXiDxsfvmuMN5rtPLnJHV_Qxo3g/exec";
 
 syncBtn.addEventListener('click', async () => {
   if (pendingData.length === 0) {
