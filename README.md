@@ -14,6 +14,7 @@ It provides volunteers with a highly optimized, mobile-first interface to rapidl
 ## 📱 How to use for volunteers
 
 Volunteers do not need to download anything from an App Store.
+⚠️ Important Warning: Do not refresh or reload the website while you are logging information, as doing so may cause you to lose any unsaved data.
 
 1. Open the live GitHub Pages URL in Safari (iOS) or Chrome (Android).
 2. Tap the **Share** icon (iOS) or the **Menu** icon (Android).
