@@ -45,6 +45,22 @@
       margin: 20px 0 12px;
     }
     .send-btn:active { background: #3d8b40; }
+    .secondary-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .copy-btn {
+      flex: 1;
+      background: white;
+      color: #333;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .copy-btn:active { background: #eee; }
     .note {
       font-size: 0.85rem;
       color: #888;
@@ -67,10 +83,68 @@
     <a class="send-btn" href="mailto:mass.parks@mass.gov?cc=bill.macgregor@mahouse.gov,michael.giordano@mahouse.gov,mike.rush@masenate.gov,enrique.pepen@boston.gov,benjamin.weber@boston.gov&subject=Community%20Safety%20Concerns%20Regarding%20Centre%2FWalter%20Streets&body=My%20family%20and%20I%20rely%20on%20the%20community%20supports%20provided%20at%201195%20Centre%20Street%20in%20West%20Roxbury%20which%20abuts%20the%20DCR%20improvement%20project%20at%20Centre%20and%20Walter%20Streets.%20%20I%20have%20safety%20concerns%20regarding%20access%20to%20the%20property.%20%20Since%20the%20project%20started%20just%20short%20of%20a%20year%20ago%2C%20there%20have%20been%20at%20least%2016%20documented%20accidents%20increasing%20my%20safety%20concern.%20%20DCR%20has%20provided%20minimal%20communication%20regarding%20the%20status%20of%20the%20following%20items%2C%20and%20I%20want%20to%20ensure%20they%20are%20being%20considered.%0A%0AI%20request%20that%20the%20traffic%20engineer%20evaluate%20the%20entrance%20and%20exit%20to%20the%20church%2Fchildcare%20center%20before%20the%20new%20signal%20is%20activated.%20Because%20the%20traffic%20signal%20is%20immediately%20beyond%20the%20driveway%2C%20I%20am%20concerned%20that%20queued%20traffic%20could%20block%20access%20to%20the%20property%20during%20peak%20periods.%0A%0AI%20ask%20that%20DCR%20consider%20appropriate%20traffic%20control%20measures%2C%20such%20as%20pavement%20markings%20%28e.g.%2C%20%E2%80%9CDO%20NOT%20BLOCK%E2%80%9D%20or%20%E2%80%9CKEEP%20CLEAR%E2%80%9D%20with%20a%20painted%20box%29%2C%20signal%20timing%20adjustments%2C%20or%20any%20other%20engineering%20solution%20necessary%20to%20keep%20the%20driveway%20clear.%0A%0AThis%20property%20serves%20a%20large%20group%20childcare%20center%2C%20a%20church%2C%20and%20multiple%20community%20programs%2C%20including%20a%20weekly%20food%20distribution%20serving%20many%20families.%20During%20weekday%20morning%20and%20afternoon%20rush%20hours%2C%20the%20driveway%20experiences%20more%20than%20100%20vehicle%20movements%20from%20childcare%20drop-off%20and%20pick-up%20and%20Faulkner%20Hospital%20employees%20who%20park%20in%20the%20lot.%20%20On%20Sundays%2C%20our%20weekly%20food%20distribution%20generates%20up%20to%20200%20vehicle%20movements%20in%20just%20two%20hours%2C%20in%20addition%20to%20church%20traffic.%20Keeping%20this%20entrance%20clear%20is%20essential%20to%20ensure%20safe%20access%20for%20parents%2C%20congregants%2C%20volunteers%2C%20deliveries%2C%20and%20emergency%20vehicles.%0A%0ASince%20the%20traffic%20light%20has%20been%20constructed%2C%20I%20request%20that%20it%20be%20activated%20as%20soon%20as%20possible%20to%20help%20organize%20the%20traffic%20in%20this%20area.%20%20While%20individuals%20often%20help%20direct%20traffic%20during%20construction%20hours%2C%20significant%20confusion%20remains%20during%20off-hours%2C%20making%20travel%20through%20this%20intersection%20very%20dangerous.%0A%0AIn%20Safety%2C%0A%0A%28YOUR%20NAME%29">
       Send Email to City &amp; State Officials
     </a>
+    <div class="secondary-row">
+      <button class="copy-btn" id="copy-message-btn" type="button">Copy Message</button>
+      <button class="copy-btn" id="copy-recipients-btn" type="button">Copy Recipients</button>
+    </div>
     <p class="note">
       This opens your phone or computer's own email app with the message pre-filled — nothing
-      is sent automatically. Please review it, add your name, and send it yourself.
+      is sent automatically. Please review it, add your name, and send it yourself. If you'd
+      rather paste the message into an email client of your own choosing, use the copy buttons
+      above instead.
     </p>
   </div>
+  <script>
+    const MESSAGE_TEXT = `Subject: Community Safety Concerns Regarding Centre/Walter Streets
+
+My family and I rely on the community supports provided at 1195 Centre Street in West Roxbury which abuts the DCR improvement project at Centre and Walter Streets.  I have safety concerns regarding access to the property.  Since the project started just short of a year ago, there have been at least 16 documented accidents increasing my safety concern.  DCR has provided minimal communication regarding the status of the following items, and I want to ensure they are being considered.
+
+I request that the traffic engineer evaluate the entrance and exit to the church/childcare center before the new signal is activated. Because the traffic signal is immediately beyond the driveway, I am concerned that queued traffic could block access to the property during peak periods.
+
+I ask that DCR consider appropriate traffic control measures, such as pavement markings (e.g., “DO NOT BLOCK” or “KEEP CLEAR” with a painted box), signal timing adjustments, or any other engineering solution necessary to keep the driveway clear.
+
+This property serves a large group childcare center, a church, and multiple community programs, including a weekly food distribution serving many families. During weekday morning and afternoon rush hours, the driveway experiences more than 100 vehicle movements from childcare drop-off and pick-up and Faulkner Hospital employees who park in the lot.  On Sundays, our weekly food distribution generates up to 200 vehicle movements in just two hours, in addition to church traffic. Keeping this entrance clear is essential to ensure safe access for parents, congregants, volunteers, deliveries, and emergency vehicles.
+
+Since the traffic light has been constructed, I request that it be activated as soon as possible to help organize the traffic in this area.  While individuals often help direct traffic during construction hours, significant confusion remains during off-hours, making travel through this intersection very dangerous.
+
+In Safety,
+
+(YOUR NAME)`;
+
+    const RECIPIENTS_TEXT = `To: mass.parks@mass.gov
+Cc: bill.macgregor@mahouse.gov, michael.giordano@mahouse.gov, mike.rush@masenate.gov, enrique.pepen@boston.gov, benjamin.weber@boston.gov`;
+
+    function copyText(text, button) {
+      const originalLabel = button.textContent;
+      const showCopied = () => {
+        button.textContent = 'Copied!';
+        setTimeout(() => { button.textContent = originalLabel; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied).catch(() => fallbackCopy(text, showCopied));
+      } else {
+        fallbackCopy(text, showCopied);
+      }
+    }
+
+    function fallbackCopy(text, onSuccess) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        onSuccess();
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    document.getElementById('copy-message-btn').addEventListener('click', (e) => copyText(MESSAGE_TEXT, e.target));
+    document.getElementById('copy-recipients-btn').addEventListener('click', (e) => copyText(RECIPIENTS_TEXT, e.target));
+  </script>
 </body>
 </html>
